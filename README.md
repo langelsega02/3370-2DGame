@@ -1,3 +1,5 @@
+#3370 2D Game
+
 Group Members: 
 Melanie Loredo
 Luis Sepulveda
@@ -10,8 +12,8 @@ Inspired by the games Stray, Jetpack Joyride and Subway Surfers
 
 Characters 
 Protagonist -Curious Cat is lost and wants to return home, and finds an abandoned robot suit to defend itself.
-Enemies - Zurks (aliens): follow Cat to attach to the top of the cat(must be destroyed to disappear)
-Sentinels (drones): Programmed to attack their surroundings (not particularly the cat itself)
+Enemies - Zurks (aliens): follow Cat to attach to the top of the cat(must be destroyed to disappear).
+Sentinels (drones): Programmed to attack their surroundings (not particularly the cat itself).
 
 Actions and Consequences 
 If Cat crashes into an enemy, they lose a life
