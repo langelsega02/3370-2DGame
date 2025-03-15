@@ -1,4 +1,4 @@
-# 🎮 3370-2DGame
+# 🎮 3370-2DGame, Title: Catpocalypse
 
 ## 👥 Group Members
 - Melanie Loredo  
