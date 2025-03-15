@@ -6,7 +6,7 @@
 - Obed Mendoza  
 
 ## 🎮 Game Definition
-**Premise:** Cat in a robot suit defeating aliens to get home  
+**Premise:** The protagonist, Cat is lost in the city and has to find a way back home defeating aliens and drones by using a robot suit that can fight back. 
 **Setting:** A post-apocalyptic city overrun with hostile aliens and robots  
 **Inspiration:** *Stray, Jetpack Joyride, Subway Surfers*  
 
