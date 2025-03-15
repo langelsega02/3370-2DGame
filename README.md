@@ -1,22 +1,24 @@
-Group Members: 
-Melanie Loredo
-Luis Sepulveda
-Obed Mendoza
+# 🎮 3370-2DGame
 
-Game definition 
-- Premise: Cat in a robot suit defeating aliens to get home
-- Setting: A post-apocalyptic city ran over with hostile aliens and robots
-- Inspired by the games Stray, Jetpack Joyride and Subway Surfers
+## 👥 Group Members
+- Melanie Loredo  
+- Luis Sepulveda  
+- Obed Mendoza  
 
-Characters 
-Protagonist -Curious Cat is lost and wants to return home, and finds an abandoned robot suit to defend itself.
-Enemies - Zurks (aliens): follow Cat to attach to the top of the cat(must be destroyed to disappear).
-Sentinels (drones): Programmed to attack their surroundings (not particularly the cat itself).
+## 🎮 Game Definition
+**Premise:** Cat in a robot suit defeating aliens to get home
+**Setting:** A post-apocalyptic city ran over with hostile aliens and robots
+**Inspiration:** *Stray, Jetpack Joyride, Subway Surfers*  
 
-Actions and Consequences 
-- If Cat crashes into an enemy, they lose a life
-- Cat can dash
-- If Cat grabs a Tuna, they get healing
-- If Cat grabs a rat, a temporary life (max 9)
-- Cat can grab a power-up to change the fire type of the suit
-- Cat can collect items that increase overall score.
+## 🐱 Characters
+- **Protagonist - Curious Cat:** Curious Cat is lost and wants to return home, and finds an abandoned robot suit to defend itself.
+- **Enemies - Zurks (Aliens):** Alien creatures that chase and attach to the cat; they must be destroyed to disappear.  
+- **Sentinels (Drones):** Programmed to attack their surroundings, but not specifically targeting the cat.  
+
+## ⚡ Actions and Consequences
+- 🔴 **If the cat crashes into an enemy, it loses a life.**  
+- ⚡ **The cat can dash.**  
+- 🐟 **Grabbing a Tuna heals the cat.**  
+- 🐀 **Grabbing a Rat grants a temporary life (max 9).**  
+- 🔥 **The cat can grab a power-up to change the fire type of the suit.**  
+- 🎯 **Collectible items increase the overall score.**  
