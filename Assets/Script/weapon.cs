@@ -1,0 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
+
+public class weapon : MonoBehaviour
+{
+
+    public Transform firepoint1;
+    public Transform firepoint2;
+    public GameObject bulletPrefab;
+    public bool tripleShotActive = false;
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {   
+            if (tripleShotActive)
+                TripleShot();
+            else
+                Shoot();
+        }
+    }
+    void Shoot()
+    {
+        //shooting
+        Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
+        Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
+    }
+
+    void TripleShot()
+    {
+        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, 0.2f), firepoint1.rotation);
+        Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
+        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, -0.2f), firepoint1.rotation);
+
+        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, 0.2f), firepoint2.rotation);
+        Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
+        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, -0.2f), firepoint2.rotation);
+    }
+
+    public void TripleShotActive()
+    {
+        tripleShotActive = true;
+        StartCoroutine(TripleShotPowerDownRoutine());
+    }
+
+    IEnumerator TripleShotPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(10f);
+        tripleShotActive = false;
+    }
+}
