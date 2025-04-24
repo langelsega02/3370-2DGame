@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8564494333047547079}
   - component: {fileID: 8564494333047547076}
   - component: {fileID: -6479454193440286332}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: building2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04745245, y: 0.0054166317}
+  m_Offset: {x: -0.05396825, y: 0.021279097}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0059443, y: 3.1391625}
+  m_Size: {x: 2.0534449, y: 3.1708875}
   m_EdgeRadius: 0
 --- !u!114 &-6479454193440286332
 MonoBehaviour:
