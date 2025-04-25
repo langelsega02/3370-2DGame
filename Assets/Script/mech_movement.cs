@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class mech_movement : MonoBehaviour
 {
-    float speedX;
-    float speedY;
-    public float speed;
     Rigidbody2D rb;
-    private bool isFacingRight = true;
-    public float jump;
 
-    public Transform inGround;
+    float speedX;
+    public float speed;
+    //private bool isFacingRight = true;
+
+    [SerializeField] float buttonTime = 0.5f;
+    [SerializeField] float jumpHeight = 5f;
+    [SerializeField] float cancelRate = 100;
+    [SerializeField] float jump;
+    float jumpTime;
+    bool jumpCancelled;
+    bool jumping;
+
+    //bool isGrounded;
+
+    //public Transform inGround;
     public LayerMask groundLayer;
-    bool isGrounded;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,20 +34,59 @@ public class mech_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics2D.OverlapCapsule(inGround.position, new Vector2(2.5f, 1.0f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-
+        //isGrounded = Physics2D.OverlapCapsule(inGround.position, new Vector2(2.5f, 1.0f), CapsuleDirection2D.Horizontal, 0, groundLayer);
         speedX = Input.GetAxisRaw("Horizontal") * speed;
-        //speedY = Input.GetAxisRaw("Vertical") * speed;
 
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            rb.AddForce(new Vector2(rb.velocity.x, jump));
+            
+            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rb.gravityScale));
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            jumping = true;
+            jumpCancelled = false;
+            jumpTime = 0;
+            //rb.velocity = new Vector2(rb.velocity.x, jump);
+        }
+        if (jumping)
+        {
+            jumpTime += Time.deltaTime;
+            
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                //cancel jump
+                jumpCancelled = true;
+            }
+            if (jumpTime > buttonTime)
+            {
+                jumping = false;
+            }
+        }
+        rb.velocity = new Vector2(speedX, rb.velocity.y);
+        //Flip();
+    }
+    bool IsGrounded()
+    {
+        Vector2 position = transform.position;
+        Vector2 direction = Vector2.down;
+        float distance = 0.5f;
+
+        Debug.DrawRay(position, direction, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+        if (hit.collider != null)
+        {
+            return true;
         }
 
-        rb.velocity = new Vector2(speedX, speedY);
-        Flip();
+        return false;
     }
-    private void Flip()
+    private void FixedUpdate()
+    {
+        if (jumpCancelled && jumping && rb.velocity.y > 0)
+        {
+            rb.AddForce(Vector2.down * cancelRate);
+        }
+    }
+    /*private void Flip()
     {
         if (isFacingRight && speedX < 0f || !isFacingRight && speedX > 0f)
         {
@@ -45,5 +94,5 @@ public class mech_movement : MonoBehaviour
 
             transform.Rotate(0f, 180f, 0f); 
         }
-    }
+    }*/
 }
