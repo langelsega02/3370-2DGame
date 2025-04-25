@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class mech_movement : MonoBehaviour
@@ -8,7 +9,7 @@ public class mech_movement : MonoBehaviour
 
     float speedX;
     public float speed;
-    private bool isFacingRight = true;
+    //private bool isFacingRight = true;
 
     [SerializeField] float buttonTime = 0.5f;
     [SerializeField] float jumpHeight = 5f;
@@ -61,7 +62,7 @@ public class mech_movement : MonoBehaviour
             }
         }
         rb.velocity = new Vector2(speedX, rb.velocity.y);
-        Flip();
+        //Flip();
     }
     bool IsGrounded()
     {
@@ -85,7 +86,7 @@ public class mech_movement : MonoBehaviour
             rb.AddForce(Vector2.down * cancelRate);
         }
     }
-    private void Flip()
+    /*private void Flip()
     {
         if (isFacingRight && speedX < 0f || !isFacingRight && speedX > 0f)
         {
@@ -93,5 +94,5 @@ public class mech_movement : MonoBehaviour
 
             transform.Rotate(0f, 180f, 0f); 
         }
-    }
+    }*/
 }

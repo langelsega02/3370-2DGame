@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 466629159}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FirePoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4055124096909599365, guid: 718d7cd6874e7d041bc8b2d1c3c3943b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.64
+      value: -2.77
       objectReference: {fileID: 0}
     - target: {fileID: 4055124096909599365, guid: 718d7cd6874e7d041bc8b2d1c3c3943b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -652,7 +652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652055244}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FirePoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,11 +688,9 @@ GameObject:
   - component: {fileID: 1670714562}
   - component: {fileID: 1670714559}
   - component: {fileID: 1670714560}
-  - component: {fileID: 1670714564}
-  - component: {fileID: 1670714563}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: cat-mech
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -737,7 +735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fb2770c235a406a42945201e8c43554a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -756,8 +754,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670714556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.04, y: -0.63, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.862, y: -0.352, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -780,9 +778,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   buttonTime: 0.5
-  jumpHeight: 2.5
+  jumpHeight: 1.75
   cancelRate: 100
-  jump: 5
+  jump: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -827,7 +825,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -849,35 +847,6 @@ MonoBehaviour:
   firepoint2: {fileID: 1652055244}
   bulletPrefab: {fileID: 8869657741274138125, guid: 9518f0130b4391e47b9634bab2029220, type: 3}
   tripleShotActive: 0
---- !u!70 &1670714563
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670714556}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.09783256, y: 0.0102981925}
-  m_Size: {x: 0.53658223, y: 0.7322475}
-  m_Direction: 0
---- !u!114 &1670714564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670714556}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61c64124c8575748994f087b9dc1b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
 --- !u!1 &2106367301
 GameObject:
   m_ObjectHideFlags: 0

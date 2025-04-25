@@ -30,13 +30,13 @@ public class weapon : MonoBehaviour
 
     void TripleShot()
     {
-        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, 0.2f), firepoint1.rotation);
+        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, -0.2f), Quaternion.Euler(new Vector3(0, 0, -45)));
         Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
-        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, -0.2f), firepoint1.rotation);
+        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0.2f, 0.2f), Quaternion.Euler(new Vector3(0, 0, 45)));
 
-        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, 0.2f), firepoint2.rotation);
+        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, 0.2f), Quaternion.Euler(new Vector3(0, 0, 45)));
         Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
-        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, -0.2f), firepoint2.rotation);
+        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, -0.2f), Quaternion.Euler(new Vector3(0, 0, -45)));
     }
 
     public void TripleShotActive()
