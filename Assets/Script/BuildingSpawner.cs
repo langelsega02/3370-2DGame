@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingSpawner : MonoBehaviour
 {
     public GameObject[] buildingPrefabs; //array
-     public float spawnRate = 1.4f; // faster spawn for city look
+    public float spawnRate = 1.4f; // faster spawn for city look
     private float timer = 0f;
 
     public float minY = 0f;
