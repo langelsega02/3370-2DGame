@@ -5,7 +5,7 @@ using UnityEngine;
 public class coin : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 3f; //speed of the scrolling game
+    public float speed = 2f; //speed of the scrolling game
     void Start()
     {
 

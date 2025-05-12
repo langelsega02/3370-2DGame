@@ -32,7 +32,7 @@ public class SteelSpawner : MonoBehaviour
 
     void SpawnBuilding()
     {
-        int randomLength = Random.Range(3, 7);
+        int randomLength = Random.Range(3, 6);
         int randomSpawn = Random.Range(0, 4);
 
         float y = Random.Range(minY, maxY);
