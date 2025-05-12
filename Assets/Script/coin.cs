@@ -5,7 +5,10 @@ using UnityEngine;
 public class coin : MonoBehaviour
 {
     // Start is called before the first frame update
+
     public float speed = 2f; //speed of the scrolling game
+    public int coinValue = 1; //coin value
+
     void Start()
     {
 
@@ -26,6 +29,11 @@ public class coin : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore(coinValue);
+            }
             /*weapon player = collision.transform.GetComponent<weapon>();
             if (player != null)
             {
