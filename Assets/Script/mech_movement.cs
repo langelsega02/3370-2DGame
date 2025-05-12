@@ -86,6 +86,7 @@ public class mech_movement : MonoBehaviour
             rb.AddForce(Vector2.down * cancelRate);
         }
     }
+
     /*private void Flip()
     {
         if (isFacingRight && speedX < 0f || !isFacingRight && speedX > 0f)
