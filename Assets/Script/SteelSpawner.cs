@@ -33,16 +33,27 @@ public class SteelSpawner : MonoBehaviour
     void SpawnBuilding()
     {
         int randomLength = Random.Range(3, 6);
-        int randomSpawn = Random.Range(0, 4);
+        int randomSpawn1 = Random.Range(0, 4);
+        int randomSpawn2 = Random.Range(0, 4);
+        int randomSpawn3 = Random.Range(0, 4);
+
 
         float y = Random.Range(minY, maxY);
         for (int i = 0; i < randomLength; i++ )
         {
             Instantiate(steelPrefab, new Vector3(transform.position.x+i, y, 0), Quaternion.identity);
         }
-        if (randomSpawn <= 2)
+        if (randomSpawn1 <= 2)
         {
-            Instantiate(coinPrefab, new Vector3(transform.position.x + (randomLength / 2), y+0.7f, 0), Quaternion.identity);
+            Instantiate(coinPrefab, new Vector3(transform.position.x + (randomLength / 2), y+0.6f, 0), Quaternion.identity);
+        }
+        if (randomSpawn2 <= 2)
+        {
+            Instantiate(coinPrefab, new Vector3(transform.position.x, y + 0.6f, 0), Quaternion.identity);
+        }
+        if (randomSpawn3 <= 2)
+        {
+            Instantiate(coinPrefab, new Vector3(transform.position.x + (randomLength), y + 0.6f, 0), Quaternion.identity);
         }
 
     }
