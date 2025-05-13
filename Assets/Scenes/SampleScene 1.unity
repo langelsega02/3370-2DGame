@@ -435,7 +435,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21840763, y: -2.9642198}
+  m_Offset: {x: -0.21840763, y: -4.1631527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -446,7 +446,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.284613, y: 1.9702371}
+  m_Size: {x: 21.284613, y: 0.9549031}
   m_EdgeRadius: 0
 --- !u!4 &275765307
 Transform:
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   spawnRate: 5
   steelPrefab: {fileID: 1987358523910409624, guid: f3d5847339dc39046ac80e51b2506282, type: 3}
   coinPrefab: {fileID: 7202968124642464587, guid: fbae5b2882a76f04793f77a25b611ec4, type: 3}
-  minY: 0
+  minY: 0.25
   maxY: 1
 --- !u!4 &1278966320
 Transform:
@@ -2505,7 +2505,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.6749656, y: -0.040621758}
+  m_Offset: {x: -2.4889095, y: -0.33074045}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2516,7 +2516,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7369666, y: 4.468688}
+  m_Size: {x: 0.6886139, y: 5.0489254}
   m_EdgeRadius: 0
 --- !u!61 &1480846380
 BoxCollider2D:
@@ -2531,7 +2531,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6.803491, y: 0.00030851364}
+  m_Offset: {x: 6.8760195, y: -0.32204533}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2542,7 +2542,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9683466, y: 4.5505495}
+  m_Size: {x: 0.6621113, y: 5.195257}
   m_EdgeRadius: 0
 --- !u!4 &1480846381
 Transform:
