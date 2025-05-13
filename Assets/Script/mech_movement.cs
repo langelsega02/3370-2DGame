@@ -13,17 +13,17 @@ public class mech_movement : MonoBehaviour
 
     [SerializeField] float buttonTime = 0.5f;
     [SerializeField] float jumpHeight = 5f;
-    [SerializeField] float cancelRate = 100;
+    //[SerializeField] float cancelRate = 100;
     [SerializeField] float jump;
     float jumpTime;
-    bool jumpCancelled;
+    //bool jumpCancelled;
     bool jumping;
 
     //bool isGrounded;
 
     //public Transform inGround;
     public LayerMask groundLayer;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,25 +37,25 @@ public class mech_movement : MonoBehaviour
         //isGrounded = Physics2D.OverlapCapsule(inGround.position, new Vector2(2.5f, 1.0f), CapsuleDirection2D.Horizontal, 0, groundLayer);
         speedX = Input.GetAxisRaw("Horizontal") * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) /*&& IsGrounded()*/)
         {
-            
+            rb.velocity = new Vector2(0, 0);
             float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * rb.gravityScale));
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             jumping = true;
-            jumpCancelled = false;
+            //jumpCancelled = false;
             jumpTime = 0;
             //rb.velocity = new Vector2(rb.velocity.x, jump);
         }
         if (jumping)
         {
             jumpTime += Time.deltaTime;
-            
-            if (Input.GetKeyUp(KeyCode.Space))
+
+            /*if (Input.GetKeyUp(KeyCode.Space))
             {
                 //cancel jump
-                jumpCancelled = true;
-            }
+               /jumpCancelled = true;
+            }*/
             if (jumpTime > buttonTime)
             {
                 jumping = false;
@@ -64,7 +64,7 @@ public class mech_movement : MonoBehaviour
         rb.velocity = new Vector2(speedX, rb.velocity.y);
         //Flip();
     }
-    bool IsGrounded()
+    /*bool IsGrounded()
     {
         Vector2 position = transform.position;
         Vector2 direction = Vector2.down;
@@ -78,13 +78,13 @@ public class mech_movement : MonoBehaviour
         }
 
         return false;
-    }
+    }*/
     private void FixedUpdate()
     {
-        if (jumpCancelled && jumping && rb.velocity.y > 0)
+        /*if (jumpCancelled && jumping && rb.velocity.y > 0)
         {
             rb.AddForce(Vector2.down * cancelRate);
-        }
+        }*/
     }
 
     /*private void Flip()
@@ -96,4 +96,5 @@ public class mech_movement : MonoBehaviour
             transform.Rotate(0f, 180f, 0f); 
         }
     }*/
+
 }
