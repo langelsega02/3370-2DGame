@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadSceneAsync(1);
+        Time.timeScale = 1f;
     }
 
     public void Menu()
