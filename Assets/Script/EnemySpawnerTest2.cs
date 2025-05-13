@@ -5,22 +5,31 @@ using UnityEngine;
 public class EnemySpawnerTest2 : MonoBehaviour
 {
     [SerializeField]
-    private GameObject swarmerPrefab;
+    private GameObject enemyPrefab;
 
     [SerializeField]
-    private float swarmerInterval = 3.5f;
-    
+    private float spawnInterval = 3f;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private float minY = -0.5f;
+    [SerializeField]
+    private float maxY = 2f;
+
+    [SerializeField]
+    private float spawnX = 10f; // Just off-screen to the right
+
     void Start()
     {
-        StartCoroutine(spawnEnemy(swarmerInterval, swarmerPrefab));
+        StartCoroutine(SpawnEnemyRoutine());
     }
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+    private IEnumerator SpawnEnemyRoutine()
     {
-        yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
-        StartCoroutine(spawnEnemy(interval, enemy));
+        while (true)
+        {
+            Vector3 spawnPosition = new Vector3(spawnX, Random.Range(minY, maxY), 0);
+            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(spawnInterval);
+        }
     }
 }

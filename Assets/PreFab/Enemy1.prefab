@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 3
+  coinPrefab: {fileID: 7202968124642464587, guid: fbae5b2882a76f04793f77a25b611ec4, type: 3}
