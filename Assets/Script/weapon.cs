@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class weapon : MonoBehaviour
@@ -17,7 +16,7 @@ public class weapon : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -28,24 +27,35 @@ public class weapon : MonoBehaviour
             }
             else
             {
-                audioSource.PlayOneShot(shootClip);
+                if (shootClip != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(shootClip);
+                }
                 Shoot();
             }
         }
     }
+
     void Shoot()
     {
-        //shooting
+        // Standard 2-shot from each firepoint
         Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
         Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
     }
 
     void TripleShot()
     {
+        if (shootClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shootClip);
+        }
+
+        // Fire 3 from firepoint1
         Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, -0.2f), Quaternion.Euler(new Vector3(0, 0, -45)));
         Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
         Instantiate(bulletPrefab, firepoint1.position + new Vector3(0.2f, 0.2f), Quaternion.Euler(new Vector3(0, 0, 45)));
 
+        // Fire 3 from firepoint2
         Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, 0.2f), Quaternion.Euler(new Vector3(0, 0, 45)));
         Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
         Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, -0.2f), Quaternion.Euler(new Vector3(0, 0, -45)));
