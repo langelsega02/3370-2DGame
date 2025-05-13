@@ -17,8 +17,10 @@ public class coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime); //scrolling around the screen
-
+        if (Time.timeScale > 0) // Only move when the game is not paused
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime); //scrolling around the screen
+        }
         if (transform.position.x < -4.1f)
         {
             Destroy(gameObject);
@@ -29,9 +31,13 @@ public class coin : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("Coin collected!"); //debug
+
             ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
             if (scoreManager != null)
             {
+                Debug.Log("Adding score...");
+                Debug.Log("Adding score...");
                 scoreManager.AddScore(coinValue);
             }
             /*weapon player = collision.transform.GetComponent<weapon>();
