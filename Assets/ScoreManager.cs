@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
 
     int score = 0;
     int highscore = 0;
-    int goal = 1;
+    int goal = 10;
     float timeLeft = 60.0f;
     bool isGamePaused = false;  // Flag to track if the game is paused
 
@@ -117,5 +117,10 @@ public class ScoreManager : MonoBehaviour
         winPanel.SetActive(false);     // Hide the win panel
 
         Debug.Log("Timer reset to: " + timeLeft);
+    }
+
+    public float GetTimeLeft()
+    {
+        return timeLeft;
     }
 }

@@ -6,13 +6,31 @@ using UnityEngine;
 public class death : MonoBehaviour
 {
     public float fallThreshold = -5f;
+    public float leftThreshold = -10f;
     public GameObject losePanel;
+
+    private ScoreManager scoreManager;
+
+    void Start()
+    {
+        scoreManager = FindObjectOfType<ScoreManager>();
+    }
 
     void Update()
     {
         if (transform.position.y < fallThreshold)
         {
             Die("Fell off screen");
+        }
+
+        if (transform.position.x < leftThreshold)
+        {
+            Die("Moved too far left");
+        }
+
+        if (scoreManager != null && scoreManager.GetTimeLeft() <= 0f)
+        {
+            Die("Time ran out");
         }
     }
 
