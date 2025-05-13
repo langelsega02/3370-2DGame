@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingSpawner : MonoBehaviour
 {
     public GameObject[] buildingPrefabs; //array
+    public GameObject coinPrefab;
     public float spawnRate = 1.4f; // faster spawn for city look
     private float timer = 0f;
 
@@ -33,11 +34,24 @@ public class BuildingSpawner : MonoBehaviour
      void SpawnBuilding()
     {
         int randomIndex = Random.Range(0, buildingPrefabs.Length);
+        int randomSpawn1 = Random.Range(0, 10);
+        int randomSpawn2 = Random.Range(0, 5);
+
         GameObject selectedBuilding = buildingPrefabs[randomIndex];
 
        float y = Random.Range(minY, maxY);
-        Vector3 spawnPos = new Vector3(transform.position.x, y, 0);
-
-        Instantiate(selectedBuilding, spawnPos, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(transform.position.x, y , 0);
+        if (randomSpawn2 != 0)
+        {
+            Instantiate(selectedBuilding, spawnPos, Quaternion.identity);
+            if (randomSpawn1 == 9)
+            {
+                Instantiate(coinPrefab, new Vector3(transform.position.x, y + 2f, 0), Quaternion.identity);
+            }
+        }
+        else
+        {
+            //do nothing, this creates a gap
+        }
     }
 }
