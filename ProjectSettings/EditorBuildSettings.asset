@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Enemy Spawner.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3024291d9703cf84785511d116fd1c60
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/HowTo.unity
+    guid: d8ff2613250b58f44a0f4270ac15c6a9
   m_configObjects: {}
