@@ -15,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     int highscore = 0;
     int goal = 1;
     float timeLeft = 60.0f;
+    bool isGamePaused = false;  // Flag to track if the game is paused
 
     // Start is called before the first frame update
     void Start()
@@ -28,16 +29,20 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Update time countdown
-        if (timeLeft > 0)
+        // Only update the timer if the game is not paused
+        if (!isGamePaused)
         {
-            timeLeft -= Time.deltaTime;
-            UpdateTimeText();
-        }
-        else
-        {
-            // Handle time's up event
-            Debug.Log("Time's up!");
+            if (timeLeft > 0)
+            {
+                timeLeft -= Time.deltaTime;
+                UpdateTimeText();
+                Debug.Log("Updated Timer: " + timeLeft); // Check if the timer updates
+            }
+            else
+            {
+                // Handle time's up event
+                Debug.Log("Time's up!");
+            }
         }
 
     }
@@ -91,16 +96,26 @@ public class ScoreManager : MonoBehaviour
         // Pause the game and show the win panel
         Time.timeScale = 0f; // Pause the game
         winPanel.SetActive(true); // Activate the win panel
+        isGamePaused = true;
     }
 
 
     public void OnContinue()
     {
-        // Reset the timer and goal after Continue is clicked
+        //unpause the game
+        Time.timeScale = 1f;
+        isGamePaused = false;
+
+        //reset the timer update UI
         timeLeft = 60f;  // Reset to initial time
         goal += 10;      // Increase the goal (or any other logic for goal increase)
         score = 0;       // Optionally reset score, or leave it as is
+
         UpdateGoalText();
         UpdateTimeText();
+
+        winPanel.SetActive(false);     // Hide the win panel
+
+        Debug.Log("Timer reset to: " + timeLeft);
     }
 }

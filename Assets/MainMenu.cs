@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
+        Time.timeScale = 1f;
     }
 
     public void Instructions()
@@ -31,10 +32,6 @@ public class MainMenu : MonoBehaviour
 
     public void OnContinue()
     {
-        // Hide the win panel and resume the game
-        winPanel.SetActive(false);
-        Time.timeScale = 1f;  // Resume the game
-
         // Call the OnContinue() method in the ScoreManager to reset the goal and timer
         scoreManager.OnContinue();
     }
