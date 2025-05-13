@@ -2764,6 +2764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14085a333d4a4fd40aee39f13d6702c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallThreshold: -5
+  losePanel: {fileID: 1619234828}
 --- !u!1 &1928266117
 GameObject:
   m_ObjectHideFlags: 0
