@@ -13,13 +13,14 @@ public class ScoreManager : MonoBehaviour
 
     int score = 0;
     int highscore = 0;
-    int goal = 1;
+    int goal = 10;
     float timeLeft = 60.0f;
     bool isGamePaused = false;  // Flag to track if the game is paused
 
     // Start is called before the first frame update
     void Start()
     {
+        highscore = PlayerPrefs.GetInt("HighScore", 0); // Default to 0 if not found
         highscoreText.text = "HIGHSCORE: " + highscore.ToString();
         UpdateGoalText();
         UpdateTimeText();
@@ -29,6 +30,14 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))  // Press H to reset highscore
+        {
+            PlayerPrefs.DeleteKey("HighScore");
+            PlayerPrefs.Save();
+            Debug.Log("Highscore reset!");
+            highscore = 0;
+            highscoreText.text = "HIGHSCORE: 0";
+        }
         // Only update the timer if the game is not paused
         if (!isGamePaused)
         {
@@ -80,6 +89,9 @@ public class ScoreManager : MonoBehaviour
         {
             highscore = score;
             highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+            // Save new highscore
+            PlayerPrefs.SetInt("HighScore", highscore);
+            PlayerPrefs.Save();
         }
 
         if (score >= goal)
@@ -117,5 +129,10 @@ public class ScoreManager : MonoBehaviour
         winPanel.SetActive(false);     // Hide the win panel
 
         Debug.Log("Timer reset to: " + timeLeft);
+    }
+
+    public float GetTimeLeft()
+    {
+        return timeLeft;
     }
 }

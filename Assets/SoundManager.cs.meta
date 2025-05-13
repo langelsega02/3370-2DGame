@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f8f7c1fb704e6bd4c95611bcf1e4a235
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sfxSource: {instanceID: 0}
+  - shootSound: {fileID: 8300000, guid: d1485906d598d3c4c8fae8be13df3789, type: 3}
+  - jumpSound: {instanceID: 0}
+  - enemyDestroySound: {instanceID: 0}
+  - coinCollectSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

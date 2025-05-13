@@ -5,20 +5,32 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
+    public AudioClip shootClip;          // Assign in Inspector
+    private AudioSource audioSource;     // Internal reference
 
     public Transform firepoint1;
     public Transform firepoint2;
     public GameObject bulletPrefab;
     public bool tripleShotActive = false;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
-        {   
+        {
             if (tripleShotActive)
+            {
                 TripleShot();
+            }
             else
+            {
+                audioSource.PlayOneShot(shootClip);
                 Shoot();
+            }
         }
     }
     void Shoot()

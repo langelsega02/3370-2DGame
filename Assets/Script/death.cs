@@ -6,13 +6,21 @@ using UnityEngine;
 public class death : MonoBehaviour
 {
     public float fallThreshold = -5f;
+    public float leftThreshold = -10f;
     public GameObject losePanel;
+
+    private ScoreManager scoreManager;
+
+    void Start()
+    {
+        scoreManager = FindObjectOfType<ScoreManager>();
+    }
 
     void Update()
     {
-        if (transform.position.y < fallThreshold)
+        if (scoreManager != null && scoreManager.GetTimeLeft() <= 0f)
         {
-            Die("Fell off screen");
+            Die("Time ran out");
         }
     }
 
@@ -25,6 +33,14 @@ public class death : MonoBehaviour
             Die("Hit enemy");
         }
         //if we have time maybe we could add particles or something
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("DeathZone"))
+        {
+            Die("Entered death zone");
+        }
     }
 
     void Die(string reason)
