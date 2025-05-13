@@ -2913,7 +2913,7 @@ GameObject:
   - component: {fileID: 1928293621}
   - component: {fileID: 1928293620}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: powerSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2934,7 +2934,7 @@ MonoBehaviour:
   spawnRate: 20
   minY: 0
   maxY: 1.5
-  powerPrefab: {fileID: 0}
+  powerPrefab: {fileID: 7153251953290630191, guid: 9f6815a89eec9194da005c4d1fe57165, type: 3}
 --- !u!4 &1928293621
 Transform:
   m_ObjectHideFlags: 0
