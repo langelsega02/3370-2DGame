@@ -18,16 +18,6 @@ public class death : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < fallThreshold)
-        {
-            Die("Fell off screen");
-        }
-
-        if (transform.position.x < leftThreshold)
-        {
-            Die("Moved too far left");
-        }
-
         if (scoreManager != null && scoreManager.GetTimeLeft() <= 0f)
         {
             Die("Time ran out");
@@ -43,6 +33,14 @@ public class death : MonoBehaviour
             Die("Hit enemy");
         }
         //if we have time maybe we could add particles or something
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("DeathZone"))
+        {
+            Die("Entered death zone");
+        }
     }
 
     void Die(string reason)
