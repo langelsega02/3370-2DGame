@@ -14,15 +14,22 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    void OnTriggerEnter2D (Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        // Ignore Coin, PowerUp, and Obstacle (like steel beam)
+        if (hitInfo.CompareTag("Coin") || hitInfo.CompareTag("PowerUp") || hitInfo.CompareTag("Obstacle"))
+        {
+            return;
+        }
+
         Debug.Log(hitInfo.name);
+
         Enemy enemy = hitInfo.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
         }
-        Destroy(gameObject);
 
+        Destroy(gameObject);
     }
 }
