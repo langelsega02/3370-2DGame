@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class weapon : MonoBehaviour
 {
-    public AudioClip shootClip;          // Assign in Inspector
-    private AudioSource audioSource;     // Internal reference
+    public AudioClip shootClip;
+    private AudioSource audioSource;
 
     public Transform firepoint1;
     public Transform firepoint2;
     public GameObject bulletPrefab;
     public bool tripleShotActive = false;
+
+    public float tripleShotRemainingTime = 0f;
+    public float tripleShotDuration = 10f;
+
+    public TextMeshProUGUI tripleShotTimerText;
 
     void Start()
     {
@@ -34,11 +40,33 @@ public class weapon : MonoBehaviour
                 Shoot();
             }
         }
+
+        // Countdown triple shot time
+        if (tripleShotActive)
+        {
+            tripleShotRemainingTime -= Time.deltaTime;
+            
+            if (tripleShotRemainingTime <= 0f)
+            {
+                tripleShotActive = false;
+                tripleShotRemainingTime = 0f;
+            }
+            if (tripleShotTimerText != null)
+            {
+                tripleShotTimerText.text = $"Triple Shot: {tripleShotRemainingTime:F1}s";
+            }
+        }
+        else
+        {
+            if (tripleShotTimerText != null)
+            {
+                tripleShotTimerText.text = "";
+            }
+        }
     }
 
     void Shoot()
     {
-        // Standard 2-shot from each firepoint
         Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
         Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
     }
@@ -50,26 +78,18 @@ public class weapon : MonoBehaviour
             audioSource.PlayOneShot(shootClip);
         }
 
-        // Fire 3 from firepoint1
-        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, -0.2f), Quaternion.Euler(new Vector3(0, 0, -45)));
+        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0f, -0.2f), Quaternion.Euler(0, 0, -45));
         Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
-        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0.2f, 0.2f), Quaternion.Euler(new Vector3(0, 0, 45)));
+        Instantiate(bulletPrefab, firepoint1.position + new Vector3(0.2f, 0.2f), Quaternion.Euler(0, 0, 45));
 
-        // Fire 3 from firepoint2
-        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, 0.2f), Quaternion.Euler(new Vector3(0, 0, 45)));
+        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, 0.2f), Quaternion.Euler(0, 0, 45));
         Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
-        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, -0.2f), Quaternion.Euler(new Vector3(0, 0, -45)));
+        Instantiate(bulletPrefab, firepoint2.position + new Vector3(0f, -0.2f), Quaternion.Euler(0, 0, -45));
     }
 
     public void TripleShotActive()
     {
         tripleShotActive = true;
-        StartCoroutine(TripleShotPowerDownRoutine());
-    }
-
-    IEnumerator TripleShotPowerDownRoutine()
-    {
-        yield return new WaitForSeconds(10f);
-        tripleShotActive = false;
+        tripleShotRemainingTime += tripleShotDuration;  // extend time instead of restarting it
     }
 }

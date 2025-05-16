@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - enemy
   - DeathZone
+  - Coin
+  - PowerUp
+  - Obstacle
   layers:
   - Default
   - TransparentFX
