@@ -11,23 +11,21 @@ public class ScoreManager : MonoBehaviour
     public Text goalText;
     public Text timeText;
 
-    int score = 0;
-    int highscore = 0;
+    int score = 0;             // Coins collected this level
+    int totalCoins = 0;        // NEW: Cumulative coins across all levels
+    int highscore = 0;         // Highest total coins collected in a run
     int goal = 10;
     float timeLeft = 60.0f;
-    bool isGamePaused = false;  // Flag to track if the game is paused
+    bool isGamePaused = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("HighScore", 0); // Default to 0 if not found
+        highscore = PlayerPrefs.GetInt("HighScore", 0); // Load saved high score
         highscoreText.text = "HIGHSCORE: " + highscore.ToString();
         UpdateGoalText();
         UpdateTimeText();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))  // Press H to reset highscore
@@ -38,22 +36,21 @@ public class ScoreManager : MonoBehaviour
             highscore = 0;
             highscoreText.text = "HIGHSCORE: 0";
         }
-        // Only update the timer if the game is not paused
+
         if (!isGamePaused)
         {
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
                 UpdateTimeText();
-                Debug.Log("Updated Timer: " + timeLeft); // Check if the timer updates
+                Debug.Log("Updated Timer: " + timeLeft);
             }
             else
             {
-                // Handle time's up event
                 Debug.Log("Time's up!");
+                // Optional: End run or trigger lose screen here
             }
         }
-
     }
 
     void UpdateGoalText()
@@ -83,13 +80,13 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+        totalCoins += amount;  // ✅ Add to cumulative score
         UpdateGoalText();
 
-        if (score > highscore)
+        if (totalCoins > highscore)
         {
-            highscore = score;
+            highscore = totalCoins;
             highscoreText.text = "HIGHSCORE: " + highscore.ToString();
-            // Save new highscore
             PlayerPrefs.SetInt("HighScore", highscore);
             PlayerPrefs.Save();
         }
@@ -97,42 +94,41 @@ public class ScoreManager : MonoBehaviour
         if (score >= goal)
         {
             Debug.Log("Goal achieved!");
-            // Add logic here for win condition
             ShowWinPanel();
         }
-
     }
 
     void ShowWinPanel()
     {
-        // Pause the game and show the win panel
-        Time.timeScale = 0f; // Pause the game
-        winPanel.SetActive(true); // Activate the win panel
+        Time.timeScale = 0f;
+        winPanel.SetActive(true);
         isGamePaused = true;
     }
 
-
     public void OnContinue()
     {
-        //unpause the game
         Time.timeScale = 1f;
         isGamePaused = false;
 
-        //reset the timer update UI
-        timeLeft = 60f;  // Reset to initial time
-        goal += 10;      // Increase the goal (or any other logic for goal increase)
-        score = 0;       // Optionally reset score, or leave it as is
+        timeLeft = 60f;
+        goal += 10;
+        score = 0;  // ✅ Reset only this level's score
 
         UpdateGoalText();
         UpdateTimeText();
 
-        winPanel.SetActive(false);     // Hide the win panel
-
+        winPanel.SetActive(false);
         Debug.Log("Timer reset to: " + timeLeft);
     }
 
     public float GetTimeLeft()
     {
         return timeLeft;
+    }
+
+    // Optional: Call this from a full game reset if needed
+    public void ResetTotalScore()
+    {
+        totalCoins = 0;
     }
 }
